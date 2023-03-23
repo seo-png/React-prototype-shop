@@ -1,3 +1,5 @@
 export default function Prototypes() {
-    return <div>Prototypes</div>;
+    return <main>
+        <div className="prototypes">상품리스트</div>
+        </main>;
 }
