@@ -144,6 +144,7 @@ export default function Prototypes() {
               autoPlay
               loop
               playsInline
+              muted
               className="prototype__artwork prototype__edit"
               src={thumbnail}
             />
