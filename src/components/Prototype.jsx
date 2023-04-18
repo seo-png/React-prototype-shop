@@ -139,7 +139,9 @@ export default function Prototypes() {
         const { id, thumbnail, title, price, desc, pieUrl } = prototype
         return <div className="prototype" key={id}>
           <a href={pieUrl} target="_BLANK" rel="noreferrer">
-          <div>
+          <div style={{
+            padding: "25px 0 33px 0",
+          }}>
             <video
               autoPlay
               loop
@@ -147,6 +149,9 @@ export default function Prototypes() {
               muted
               className="prototype__artwork prototype__edit"
               src={thumbnail}
+              style={{
+                objectFit: "contain",
+              }}
             />
           </div>
           </a>
