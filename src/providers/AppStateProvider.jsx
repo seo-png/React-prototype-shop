@@ -137,7 +137,9 @@ const AppStateProvider = ({children}) => {
   ]);
   const [orders, setOrders] = useState([]);
 
-  const addToOrder = useCallback((id) => {}, []);
+  const addToOrder = useCallback((id) => {
+    console.log(id, 'id test');
+  }, []);
   const remove = useCallback((id) => {}, []);
   const removeAll = useCallback(() => {}, []);
 
