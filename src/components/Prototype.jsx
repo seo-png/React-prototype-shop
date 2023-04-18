@@ -155,6 +155,18 @@ export default function Prototypes() {
             />
           </div>
           </a>
+
+          <div className="prototype__body">
+            <div className="prototype__title">
+              <div className="btn btn--primary float--right">
+                <i className="icon icon--plus" />
+              </div>
+
+              {title}
+            </div>
+            <p className="prototype__price">$ {price}</p>
+            <p className="prototype__desc">{desc}</p>
+          </div>
         </div>})
       }</div>
     </main>
