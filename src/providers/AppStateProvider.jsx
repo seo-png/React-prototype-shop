@@ -137,8 +137,27 @@ const AppStateProvider = ({children}) => {
   ]);
   const [orders, setOrders] = useState([]);
 
+  // [{ id, quantity: 1 }]
   const addToOrder = useCallback((id) => {
-    console.log(id, 'id test');
+    setOrders(orders => {
+      // id가 중복인지 판별 (있다면 data, 없다면 undefined)
+      const finded = orders.find(order => order.id === id);
+
+      if (finded === undefined) {
+        return [...orders, { id, quantity: 1 }];
+      } else {
+        return orders.map(order => {
+          if(order.id === id) {
+            return {
+              id,
+              quantity: order.quantity + 1
+            }
+          } else {
+            return order;
+          }
+        })
+      }
+    });
   }, []);
   const remove = useCallback((id) => {}, []);
   const removeAll = useCallback(() => {}, []);

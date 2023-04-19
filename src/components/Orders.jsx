@@ -1,4 +1,7 @@
+import useOrders from "../hooks/useOrders"
+
 export default function Orders() {
+    const orders = useOrders();
     return <aside>
         <div className="empty">
             <div className="title">You don't have any orders</div>
