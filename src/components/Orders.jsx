@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import useActions from "../hooks/useActions"
 import useOrders from "../hooks/useOrders"
 import usePrototypes from "../hooks/usePrototypes"
@@ -5,7 +6,17 @@ import usePrototypes from "../hooks/usePrototypes"
 export default function Orders() {
   const orders = useOrders();
   const prototypes = usePrototypes();
-  const {remove} = useActions();
+  const { remove } = useActions();
+
+  const totalPrice = useMemo(() => {
+    return orders
+      .map((order) => {
+      const { id, quantity } = order;
+      const prototype = prototypes.find((p) => p.id === id);
+      return prototype.price * quantity;
+    })
+    .reduce((l, r) => l + r, 0);
+  }, [orders, prototypes]);
 
   // 초기화면 && 담기 갯수가 0인 경우
   if (orders.length === 0) {
@@ -50,6 +61,15 @@ export default function Orders() {
               </div>
             </div>);
           })}
+        </div>
+        <div className="total">
+          <hr />
+          <div className="item">
+            <div className="content">Total</div>
+            <div className="action">
+              <div className="price">$ {totalPrice}</div>
+            </div>
+          </div>
         </div>
        </div>
     </aside>
